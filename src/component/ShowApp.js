@@ -1,22 +1,18 @@
 import React from 'react';
 import App from './App';
 import useDataFetcher from '../hooks/dataFetcher';
-import '..';
+import Appholder from './AppHolder';
 const Showticket = (props) => {
   const { isLoading, apps,taq } = useDataFetcher();
-console.log(taq)
-console.log(apps)
 
   return (
     <React.Fragment>
       {isLoading ? (
         <p className="loading">Loading...</p>
       ) : (
-        <React.Fragment>
-          {apps.map((app) => (
-            <App key={app.id} app={app} taq={taq} />
-          ))}
-        </React.Fragment>
+        <div className='app-holder'>
+          <Appholder app={apps} taq={taq}></Appholder>
+        </div>
       )}
     </React.Fragment>
   );
